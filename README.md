@@ -18,5 +18,5 @@ fillspots = [
     (9,2,8),(9,6,9),(9,8,6)
 ]
 
-<img width="322" alt="sudoku_game_example" src="https://user-images.githubusercontent.com/16527038/34660455-4dd60c96-f3f7-11e7-9d2d-dc0b1488e9f2.png">
+<img width="313" alt="sudoku_game_example" src="https://user-images.githubusercontent.com/16527038/34660522-e0c5ea44-f3f7-11e7-8582-51cf75e8768e.png">
 
