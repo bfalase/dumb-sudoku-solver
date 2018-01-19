@@ -10,23 +10,39 @@ import numpy as np
 from collections import Counter, OrderedDict
 from pprint import pprint
 from Utilities import sudoku_utilities
+import time
 
+startTime = time.time()
 game = np.zeros((9,9))
 game = game.astype(int)
-fillspots = [
-    (1,2,7),(1,4,2),(1,8,4),
-    (2,3,8),
-    (3,4,1),(3,5,9),(3,6,5),(3,9,3),
-    (4,2,5),(4,4,6),(4,6,7),(4,7,2),(4,9,9),
-    (6,1,4),(6,3,7),(6,4,9),(6,6,1),(6,8,3),
-    (7,1,2),(7,4,5),(7,5,3),(7,6,6),
-    (8,7,9),
-    (9,2,8),(9,6,9),(9,8,6)
-]
-for points in fillspots:
-    rowPos, colPos, val = points
-    game[rowPos-1, colPos-1] = val
-
+#fillspots = [
+#    (1,1,3),(1,2,2),(1,6,6),(1,9,4),
+#    (2,3,9),(2,9,3),
+#    (3,4,8),(3,8,6),
+#    (4,1,1),(4,5,7),(4,7,5),
+#    (5,4,9),(5,6,3),
+#    (6,3,8),(6,5,5),(6,9,2),
+#    (7,2,6),(7,6,1),
+#    (8,1,2),(8,7,7),
+#    (9,1,5),(9,4,4),(9,8,1),(9,9,8)
+#]
+positions=[
+        """100007300
+        608000000
+        200300000
+        001000002
+        847000500
+        300000090
+        000000703
+        000103840
+        400068005"""
+        ]
+positions = positions[0].replace('\n','').replace(' ','')
+counter=0
+for row in range(9):
+    for column in range(9):
+        game[row,column] = positions[counter]
+        counter +=1
 print(game)
 
 continueLooping = True
@@ -83,5 +99,8 @@ for index, combo in enumerate(combos):
     if sudoku_utilities.checkGame(comboGameToCheck):
         solutions.append(comboGameToCheck)
 print("Game won!! Found {} solution(s) out of a total of {} choices".format(len(solutions), len(combos)))
+endTime = time.time()
+totalTime = endTime-startTime
+print("Time to solve: {} seconds".format(totalTime))
 for solution in solutions:
-    print(solution)
+    pprint(solution)
